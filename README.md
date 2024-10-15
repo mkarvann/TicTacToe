@@ -5,12 +5,13 @@ This program allows a player to play the AI Computer in a classic game of tic-ta
 The team consists of:
 -  
 -  
--  
+- Manoj Karvannan [MK]
 - John Bedingfield
 
 
 # TO-DO
 - [ ] Finish answering questions in word doc
+      - Attached the "TicTacToe_GroupAssignment.docx" word file for the answers [MK]
 - [ ] Agree on team assignments
 - NOTE: This may change based on the sub code provided Thur
 - [ ] Write game engine class TTT()
