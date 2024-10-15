@@ -30,6 +30,27 @@ moveT TTT_AI::FindBestMove(vector<char> state, int depth, int & rating){
 
 
 int TTT_AI::EvaluatePosition(vector<char> state, int depth){
+    /* all possible winning combinations */
+    vector<int> winningBoards {123, 456, 789,
+                                147, 258, 369,
+                                159, 357};
+    vector<int> placesComputerOwns;
+    vector<int> placesPlayerOwns;
+
+    /* find the squares we own */
+    for(size_t i = 0; i < 9; i++){                /* it would be better to use NUM_ROWS, NUM_COLS*/
+        if(state[i] == COMPUTER_TOKEN){
+            /* we own this square */
+            placesComputerOwns.push_back(i+1);
+        }
+        if(state[i] == PLAYER_TOKEN){
+            /* we own this square */
+            placesPlayerOwns.push_back(i+1);
+        }
+    }
+
+    /* check to see if either of us match a win, and set the score appropriately */
+    
 
 }  // end EvaluatePosition
 

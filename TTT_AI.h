@@ -5,6 +5,9 @@
 
 using std::vector;
 
+/* Assumes computer is using this token */
+char PLAYER_TOKEN = 'x';
+char COMPUTER_TOKEN = 'o';
 
 /*
  * Type: moveT
@@ -34,6 +37,7 @@ Assumes:
 class TTT_AI {
     private:
         int MAX_DEPTH;
+
 
     public:
         /* Constructor */
