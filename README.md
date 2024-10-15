@@ -3,9 +3,9 @@ This program allows a player to play the AI Computer in a classic game of tic-ta
 
 # Team
 The team consists of:
-- 
-- 
-- 
+-  
+-  
+-  
 - John Bedingfield
 
 
