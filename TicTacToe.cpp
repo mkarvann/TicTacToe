@@ -53,6 +53,7 @@ void TicTacToe::playGame(){
         /* print instructions */
 
         /* print current game board / state */
+        printTheGame(this->board);
 
         /* take User input */
 

@@ -11,13 +11,7 @@ using std::endl;
 using std::vector;
 
 
-int MAX_DEPTH = 9;
-int NUM_ROWS = 3;
-int NUM_COLS = 3;
 
-/* Assumes computer is using this token */
-char PLAYER_TOKEN = 'x';
-char COMPUTER_TOKEN = 'o';
 
 /*
  * Type: moveT
@@ -59,6 +53,14 @@ class TicTacToe {
             7 | 8 | 9
         */
         vector<char> board;
+
+        int MAX_DEPTH = 9;
+        int NUM_ROWS = 3;
+        int NUM_COLS = 3;
+
+        /* Assumes computer is using this token */
+        char PLAYER_TOKEN = 'x';
+        char COMPUTER_TOKEN = 'o';
 
 
         /* printTheGame
