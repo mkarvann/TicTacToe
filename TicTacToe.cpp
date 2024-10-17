@@ -69,11 +69,11 @@ void TicTacToe::playGame(){
     bool gameIsOver = false;
     //TTT_AI theAI;
 
+    /* print instructions */
     printGameInstructions();
+
     /* game loop */
     while(!gameIsOver){
-
-        /* print instructions */
 
         /* print current game board / state */
         printTheGame(this->board);
