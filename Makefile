@@ -4,7 +4,7 @@
 CC = g++
 CFLAGS = -Wall -g
 DEPS = 
-OBJS = main_test.o TTT_AI.o
+OBJS = main_test.o TicTacToe.o TTT_AI.o
 EXEC = main_test
 
 all: $(EXEC)
