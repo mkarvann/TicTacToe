@@ -1,6 +1,6 @@
 #include<vector>
 #include "TicTacToe.h"
-#include "TTT_AI.h"
+//#include "TTT_AI.h"
 
 using std::vector;
 
@@ -45,7 +45,7 @@ void TicTacToe::printTheGame(vector<char> gameState){
 
 void TicTacToe::playGame(){
     bool gameIsOver = false;
-    TTT_AI theAI;
+    //TTT_AI theAI;
 
     /* game loop */
     while(!gameIsOver){

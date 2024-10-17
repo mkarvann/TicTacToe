@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>
 #include "TicTacToe.h"
-#include "TTT_AI.h"
+//#include "TTT_AI.h"
 
 
 using std::cout;

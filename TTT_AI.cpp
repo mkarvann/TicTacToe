@@ -9,9 +9,9 @@ TTT_AI::TTT_AI(){
 }
 
 
-moveT TTT_AI::FindBestMove(vector<char> state, int depth, int & rating){
+int TTT_AI::FindBestMove(vector<char> state, int depth, int & rating){
     /* for (each possible move or until you find a forced win) */
-    vector<moveT> potentialMoves;
+    vector<int> potentialMoves;
     GenerateMoveList(state, potentialMoves); 
         /* Make the move */
 
@@ -34,22 +34,28 @@ moveT TTT_AI::FindBestMove(vector<char> state, int depth, int & rating){
 
 
 
-int TTT_AI::EvaluatePosition(vector<char> state, int depth){
+int TTT_AI::EvaluatePosition(vector<char> state, int depth, char player){
     int score = 0;
     /* all possible winning combinations */
     vector<vector<int>> winningBoards {{1,2,3}, {4,5,6}, {7,8,9},
                                         {1,4,7}, {2,5,8}, {3,6,9},
                                         {1,5,9}, {3,5,7}};
-    vector<int> placesComputerOwns;
+    vector<int> placesOpponentOwns;
     vector<int> placesPlayerOwns;
+    char opponentToken;
+    if(player == 'x'){
+        opponentToken = 'o';
+    } else {
+        opponentToken = 'x';
+    }
 
     /* find the squares we own */
     for(size_t i = 0; i < 9; i++){                /* it would be better to use NUM_ROWS, NUM_COLS*/
-        if(state[i] == COMPUTER_TOKEN){
-            /* we own this square */
-            placesComputerOwns.push_back(i+1);
+        if(state[i] == opponentToken){
+            /* opponent owns this square */
+            placesOpponentOwns.push_back(i+1);
         }
-        if(state[i] == PLAYER_TOKEN){
+        if(state[i] == player){
             /* we own this square */
             placesPlayerOwns.push_back(i+1);
         }
@@ -60,7 +66,7 @@ int TTT_AI::EvaluatePosition(vector<char> state, int depth){
     bool PersonMatch = true;
     for(auto win : winningBoards){
         for(auto square : win){
-            if(std::find(placesComputerOwns.begin(), placesComputerOwns.end(), square) != placesComputerOwns.end() ){
+            if(std::find(placesOpponentOwns.begin(), placesOpponentOwns.end(), square) != placesOpponentOwns.end() ){
                 computerMatch = computerMatch && true;
             } else {
                 computerMatch = computerMatch && false;
@@ -83,7 +89,7 @@ int TTT_AI::EvaluatePosition(vector<char> state, int depth){
 }  // end EvaluatePosition
 
 
-void TTT_AI::GenerateMoveList(vector<char> state, vector<moveT> &moveArray){
+void TTT_AI::GenerateMoveList(vector<char> state, vector<int> &moveArray){
     for(size_t i = 1; i <= 9; i++){
         if(state[i-1] == ' '){
             /* this is a potential move, update moveArray, and keep going */

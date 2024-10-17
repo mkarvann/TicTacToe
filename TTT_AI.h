@@ -2,7 +2,7 @@
 #define __TTT_AI__
 
 #include<vector>
-#include "TicTacToe.h"
+//#include "TicTacToe.h"
 
 using std::vector;
 
@@ -25,9 +25,21 @@ class TTT_AI {
         /* Constructor */
         TTT_AI();
 
-        moveT FindBestMove(vector<char> state, int depth, int & rating);
-        int EvaluatePosition(vector<char> state, int depth);
-        void GenerateMoveList(vector<char> state, vector<moveT> &moveArray); 
+        int FindBestMove(vector<char> state, int depth, int & rating);
+
+        /* Evaluates the position. 
+        NOTE:  Needs to be modified.  There is a winning
+        game state that should be seperated. Also, this method should interface
+        with FindBestMove for the minMax approach to work correctly 
+        Takes:
+          the 'state' of the game, or game board
+          the current depth of the evaluation
+          the symbol that represents the player to be evaluated, either an 'x' or an 'o'
+        */
+        int EvaluatePosition(vector<char> state, int depth, char player);
+        
+        
+        void GenerateMoveList(vector<char> state, vector<int> &moveArray); 
 
         /* deconstructor */
         ~TTT_AI(){};
