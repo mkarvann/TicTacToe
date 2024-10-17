@@ -76,6 +76,8 @@ class TicTacToe {
         */
         void printTheGame(vector<char> gameState);
 
+        void printGameInstructions();
+
         char checkWinner();
 
         void makeMove(int row, int col);

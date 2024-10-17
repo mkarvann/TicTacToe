@@ -26,6 +26,8 @@ TicTacToe::TicTacToe(){
   case we want to play a board bigger than 3x3)
 */
 void TicTacToe::printTheGame(vector<char> gameState){
+    cout << "------------------------" << endl;
+    cout << "The board now looks like:" << endl << endl;
     for(int row = 0; row < NUM_ROWS; row++){
         cout << "   ";
         for(int col = 0; col < NUM_COLS; col++){
@@ -42,11 +44,32 @@ void TicTacToe::printTheGame(vector<char> gameState){
     }
 }  // end printTheGame
 
+void TicTacToe::printGameInstructions(){
+    cout << endl << endl;
+    cout << "===========================" << endl;
+    cout << "======= Tic Tac Toe =======" << endl;
+    cout << "===========================" << endl;
+    cout << "Welcome to Tic_Tac-Toe !" << endl;
+    cout << "You know how to play." << endl;
+    cout << "The cells are referred to by" << endl;
+    cout << "a numbering scheme as follows:" << endl;
+    cout << "        1 | 2 | 3" << endl;
+    cout << "       ---+---+---" << endl;
+    cout << "        4 | 5 | 6 " << endl;
+    cout << "       ---+---+---" << endl;
+    cout << "        7 | 8 | 9" << endl;
+    cout << "To make a move, select the " << endl;
+    cout << "number of the cell you want" << endl;
+    cout << "to mark." << endl << endl;
+
+}
+
 
 void TicTacToe::playGame(){
     bool gameIsOver = false;
     //TTT_AI theAI;
 
+    printGameInstructions();
     /* game loop */
     while(!gameIsOver){
 
