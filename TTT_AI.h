@@ -2,7 +2,7 @@
 #define __TTT_AI__
 
 #include<vector>
-//#include "TicTacToe.h"
+#include "TicTacToe.h"
 
 using std::vector;
 
@@ -18,12 +18,12 @@ Assumes:
 - 
 */
 class TTT_AI {
-    private:
-
+    private: 
+    int MAX_DEPTH = 9;
 
     public:
         /* Constructor */
-        TTT_AI();
+        TTT_AI(int MAX_DEPTH);
 
         int FindBestMove(vector<char> state, int depth, int & rating);
 

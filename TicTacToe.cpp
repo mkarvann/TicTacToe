@@ -1,4 +1,5 @@
-#include<vector>
+#include <vector>
+#include <iostream>
 #include "TicTacToe.h"
 //#include "TTT_AI.h"
 
@@ -10,6 +11,9 @@ TicTacToe::TicTacToe(){
    this->board = {' ',' ',' ',
                 ' ',' ',' ',
                 ' ',' ',' '};
+
+    // board = vector<vector<char>>(3, vector<char>(3, EMPTY));
+    // Can we use this? [MK]
 }
 
 
