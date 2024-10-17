@@ -5,8 +5,7 @@ using std::find;
 
 
 /* Constructor */
-TTT_AI::TTT_AI(int MAX_DEPTH){
-    this->MAX_DEPTH = MAX_DEPTH;
+TTT_AI::TTT_AI(){
 }
 
 
@@ -28,6 +27,9 @@ moveT TTT_AI::FindBestMove(vector<char> state, int depth, int & rating){
 
     /* Return the best move. */
 
+
+    /* NOTE: next line just a placeholder */
+    return -1;
 }  // end FindBestMove()
 
 
@@ -59,14 +61,14 @@ int TTT_AI::EvaluatePosition(vector<char> state, int depth){
     for(auto win : winningBoards){
         for(auto square : win){
             if(std::find(placesComputerOwns.begin(), placesComputerOwns.end(), square) != placesComputerOwns.end() ){
-                computerMatch && true;
+                computerMatch = computerMatch && true;
             } else {
-                computerMatch && false;
+                computerMatch = computerMatch && false;
             }
             if(std::find(placesPlayerOwns.begin(), placesPlayerOwns.end(), square) != placesPlayerOwns.end() ){
-                PersonMatch && true;
+                PersonMatch = PersonMatch && true;
             } else {
-                PersonMatch && false;
+                PersonMatch = PersonMatch && false;
             }
         }
         if(computerMatch){

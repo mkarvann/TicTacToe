@@ -1,30 +1,13 @@
 #include<vector>
 #include "TicTacToe.h"
+#include "TTT_AI.h"
+
 using std::vector;
-
-/*
-class TicTacToe
-{
-public:
-    TicTacToe();
-    void playGame();
-private:
-    vector<char> board;
-    void printBoard();
-    char checkWinner();
-    void makeMove(int row, int col);
-    int minimax(bool isMaximizing);
-    findBestMove();
-};
-*/
-
-
-
 
 
 /* Constructor */
 TicTacToe::TicTacToe(){
-   this->board {' ',' ',' ',
+   this->board = {' ',' ',' ',
                 ' ',' ',' ',
                 ' ',' ',' '};
 }
@@ -43,9 +26,9 @@ TicTacToe::TicTacToe(){
   case we want to play a board bigger than 3x3)
 */
 void TicTacToe::printTheGame(vector<char> gameState){
-    for(size_t row = 0; row < NUM_ROWS; row++){
+    for(int row = 0; row < NUM_ROWS; row++){
         cout << "   ";
-        for(size_t col = 0; col < NUM_COLS; col++){
+        for(int col = 0; col < NUM_COLS; col++){
             cout << gameState[row * NUM_COLS + col];
             if(col < NUM_COLS - 1){
                 cout << " | ";
@@ -58,3 +41,53 @@ void TicTacToe::printTheGame(vector<char> gameState){
         
     }
 }  // end printTheGame
+
+
+void TicTacToe::playGame(){
+    bool gameIsOver = false;
+    TTT_AI theAI;
+
+    /* game loop */
+    while(!gameIsOver){
+
+        /* print instructions */
+
+        /* print current game board / state */
+
+        /* take User input */
+
+        /* check if winner, or game over */
+
+        /* print current game board / state */
+
+        /* allow Computer move (if there are moves left ) */
+        // theAI.move();
+
+        /* check if winner, or game over */
+
+
+        /* next line is just a placeholder for testing*/
+        gameIsOver = true;
+
+    } // end game loop
+
+}
+
+
+
+void TicTacToe::moves(vector<char> gameState){
+    
+}
+
+
+char TicTacToe::checkWinner(){
+
+    /* NOTE: next line just for placeholder */
+    return -1;
+}
+
+void TicTacToe::makeMove(int row, int col){
+
+}
+
+
