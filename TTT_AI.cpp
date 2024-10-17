@@ -1,4 +1,7 @@
 #include "TTT_AI.h"
+#include <algorithm>
+
+using std::find;
 
 
 /* Constructor */
@@ -30,7 +33,51 @@ moveT TTT_AI::FindBestMove(vector<char> state, int depth, int & rating){
 
 
 int TTT_AI::EvaluatePosition(vector<char> state, int depth){
+    int score = 0;
+    /* all possible winning combinations */
+    vector<vector<int>> winningBoards {{1,2,3}, {4,5,6}, {7,8,9},
+                                        {1,4,7}, {2,5,8}, {3,6,9},
+                                        {1,5,9}, {3,5,7}};
+    vector<int> placesComputerOwns;
+    vector<int> placesPlayerOwns;
 
+    /* find the squares we own */
+    for(size_t i = 0; i < 9; i++){                /* it would be better to use NUM_ROWS, NUM_COLS*/
+        if(state[i] == COMPUTER_TOKEN){
+            /* we own this square */
+            placesComputerOwns.push_back(i+1);
+        }
+        if(state[i] == PLAYER_TOKEN){
+            /* we own this square */
+            placesPlayerOwns.push_back(i+1);
+        }
+    }
+
+    /* check to see if either of us match a win, and set the score appropriately */
+    bool computerMatch = true;
+    bool PersonMatch = true;
+    for(auto win : winningBoards){
+        for(auto square : win){
+            if(std::find(placesComputerOwns.begin(), placesComputerOwns.end(), square) != placesComputerOwns.end() ){
+                computerMatch && true;
+            } else {
+                computerMatch && false;
+            }
+            if(std::find(placesPlayerOwns.begin(), placesPlayerOwns.end(), square) != placesPlayerOwns.end() ){
+                PersonMatch && true;
+            } else {
+                PersonMatch && false;
+            }
+        }
+        if(computerMatch){
+            score += 1;
+        } else if (PersonMatch){
+            score -= 1;
+        }
+
+    }  // end for winningBoards
+
+    return score;
 }  // end EvaluatePosition
 
 
