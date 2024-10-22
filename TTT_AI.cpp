@@ -10,6 +10,10 @@ TTT_AI::TTT_AI(int MAX_DEPTH)
     this->MAX_DEPTH = MAX_DEPTH;
 }
 
+int TTT_AI::FindBestMove(vector<char> state, int depth, char player){
+    int rating;
+    return this->FindBestMove(state, depth, rating, player);
+}
 
 int TTT_AI::FindBestMove(vector<char> state, int depth, int & rating, char player)
 {

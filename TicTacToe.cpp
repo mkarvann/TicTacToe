@@ -78,8 +78,13 @@ void TicTacToe::playGame(){
     bool gameIsOver = false;
     TTT_AI theAI(MAX_DEPTH);
 
+    char humanPlayer = 'x';
+    char computerPlayer = 'o';
+
     /* print instructions */
     printGameInstructions();
+
+    int currentDepth = MAX_DEPTH;
 
     /* game loop */
     while(!gameIsOver){
@@ -92,7 +97,7 @@ void TicTacToe::playGame(){
 
         /* make the move */
         if(validMove(userChoice, this->board)){
-            updateGame(this->board, userChoice, 'x');           /* <=== NOTE: Perhaps the player can choose at the beginning whether to play x or o */
+            updateGame(this->board, userChoice, humanPlayer);           /* <=== NOTE: Perhaps the player can choose at the beginning whether to play x or o */
         } else {
             cout << "I'm sorry, that is not a valid move. You lost a turn\n";
             /* next line just for testing */
@@ -103,7 +108,7 @@ void TicTacToe::playGame(){
         printTheGame(this->board);
 
         /* check if winner, or game over */
-        if(checkWinner('x')){
+        if(checkWinner(humanPlayer)){
             gameIsOver = true;
             cout << " ***** YOU WIN ***** !!!!!\n";
             return;
@@ -112,10 +117,12 @@ void TicTacToe::playGame(){
 
 
         /* allow Computer move (if there are moves left ) */
-        // theAI.move();
+        int computerMove = theAI.FindBestMove(this->board, currentDepth, computerPlayer);
+        updateGame(this->board, computerMove, computerPlayer); 
+        currentDepth -= 2;
 
         /* check if winner, or game over */
-        if(checkWinner('0')){
+        if(checkWinner(computerPlayer)){
             gameIsOver = true;
             cout << " ***** COMPUTER WINS ***** !!!!!\n";
             return;
@@ -158,11 +165,13 @@ bool TicTacToe::checkWinner(char player){
             placesPlayerOwns.push_back(i+1);
         }
     }
+    /*
     cout << "Paces player owns: ";
     for(auto item : placesPlayerOwns){
         cout << item << ", ";
     }
     cout << endl;
+    */
 
     /* check to see if either of us match a win, and set the score appropriately */
 
