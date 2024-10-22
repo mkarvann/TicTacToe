@@ -25,7 +25,7 @@ class TTT_AI {
         /* Constructor */
         TTT_AI(int MAX_DEPTH);
 
-        int FindBestMove(vector<char> state, int depth, int & rating);
+        int FindBestMove(vector<char> state, int depth, int & rating, char player);
 
         /* Evaluates the position. 
         NOTE:  Needs to be modified.  There is a winning

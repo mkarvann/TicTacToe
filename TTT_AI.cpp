@@ -11,8 +11,12 @@ TTT_AI::TTT_AI(int MAX_DEPTH)
 }
 
 
-int TTT_AI::FindBestMove(vector<char> state, int depth, int & rating)
+int TTT_AI::FindBestMove(vector<char> state, int depth, int & rating, char player)
 {
+    char opponent = 'x';
+    if (player == 'x'){
+        opponent = 'o';
+    }
     /* for (each possible move or until you find a forced win) */
     vector<int> potentialMoves;
     GenerateMoveList(state, potentialMoves); 
@@ -24,18 +28,18 @@ int TTT_AI::FindBestMove(vector<char> state, int depth, int & rating)
 
     for (int move : potentialMoves)
     {
-        state[move - 1 ] = COMPUTER_TOKEN;
+        state[move - 1 ] = 'o';
 
         /* Evaluate the resulting position, adding one to the depth indicator. */
         int currentRating;
 
         if (depth < MAX_DEPTH)
         {
-            FindBestMove(state, depth + 1, currentRating);
+            FindBestMove(state, depth + 1, currentRating, opponent);
         }
         else
         {
-            currentRating = EvaluatePosition(state, depth);
+            currentRating = EvaluatePosition(state, depth, player);
         }
 
         if(((depth % 2 ==0) && (currentRating > rating)) || ((depth % 2 != 0) && (currentRating < rating)))

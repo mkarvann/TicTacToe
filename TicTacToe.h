@@ -5,10 +5,12 @@
 
 #include<iostream>
 #include<vector>
+#include<string>
 
 using std::cout;
 using std::endl;
 using std::vector;
+using std::string;
 
 
 
@@ -78,7 +80,7 @@ class TicTacToe {
 
         void printGameInstructions();
 
-        char checkWinner();
+        bool checkWinner(char player);
 
         void makeMove(int row, int col);
 
@@ -86,6 +88,9 @@ class TicTacToe {
 
         //int minimax(bool isMaximizing);
         //findBestMove();
+        int getUserMenuInput(string prompt);
+        bool validMove(int move, vector<char> gameState);
+        void updateGame(vector<char> &gameState, int move, char player);
 };
 
 #endif
