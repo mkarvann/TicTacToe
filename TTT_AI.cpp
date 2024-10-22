@@ -5,33 +5,59 @@ using std::find;
 
 
 /* Constructor */
-TTT_AI::TTT_AI(){
+TTT_AI::TTT_AI(int MAX_DEPTH)
+{
+    this->MAX_DEPTH = MAX_DEPTH;
 }
 
 
-int TTT_AI::FindBestMove(vector<char> state, int depth, int & rating){
+int TTT_AI::FindBestMove(vector<char> state, int depth, int & rating)
+{
     /* for (each possible move or until you find a forced win) */
     vector<int> potentialMoves;
     GenerateMoveList(state, potentialMoves); 
-        /* Make the move */
+        /* Make the move */    
 
+    int bestMove = -1;
+
+    rating = (depth % 2 == 0) ? -1000 : 1000;
+
+    for (int move : potentialMoves)
+    {
+        state[move - 1 ] = COMPUTER_TOKEN;
 
         /* Evaluate the resulting position, adding one to the depth indicator. */
+        int currentRating;
 
+        if (depth < MAX_DEPTH)
+        {
+            FindBestMove(state, depth + 1, currentRating);
+        }
+        else
+        {
+            currentRating = EvaluatePosition(state, depth);
+        }
+
+        if(((depth % 2 ==0) && (currentRating > rating)) || ((depth % 2 != 0) && (currentRating < rating)))
+        {
+            rating = currentRating;
+            bestMove = move;
+        }
         /* Keep track of the minimum rating so far, along with the corresponding move. */
 
         /* Retract the move to restore the original state. */
+        
     
- 
-    /* Store the move rating into the reference parameter. */
+        /* Store the move rating into the reference parameter. */
 
-    /* Return the best move. */
+        /* Return the best move. */
+        state[move - 1] = ' ';
 
 
     /* NOTE: next line just a placeholder */
-    return -1;
+    return bestMove;
+    }
 }  // end FindBestMove()
-
 
 
 int TTT_AI::EvaluatePosition(vector<char> state, int depth, char player){
