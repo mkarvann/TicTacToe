@@ -84,7 +84,7 @@ void TicTacToe::playGame(){
     /* print instructions */
     printGameInstructions();
 
-    int currentDepth = MAX_DEPTH;
+    int currentDepth = 0;
 
     /* game loop */
     while(!gameIsOver){
@@ -119,7 +119,7 @@ void TicTacToe::playGame(){
         /* allow Computer move (if there are moves left ) */
         int computerMove = theAI.FindBestMove(this->board, currentDepth, computerPlayer);
         updateGame(this->board, computerMove, computerPlayer); 
-        currentDepth -= 2;
+        currentDepth += 1;
 
         /* check if winner, or game over */
         if(checkWinner(computerPlayer)){

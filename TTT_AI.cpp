@@ -32,7 +32,7 @@ int TTT_AI::FindBestMove(vector<char> state, int depth, int & rating, char playe
 
     for (int move : potentialMoves)
     {
-        state[move - 1 ] = 'o';
+        state[move - 1 ] = player;
 
         /* Evaluate the resulting position, adding one to the depth indicator. */
         int currentRating;
